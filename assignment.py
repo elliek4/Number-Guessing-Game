@@ -15,6 +15,7 @@ previous_guesses = []
 print("Welcome to the Number Guessing Game!")
 print("You'll have to guess a number between 1-10 to win.")
 print("Good luck!")
+print()
 
 # condition to keep running while loop until correct answer is guessed
 correct_answer_picked = False
@@ -27,18 +28,20 @@ while correct_answer_picked == False:
     # use loop to validate whether user's guess is in the range
     while user_guess < 1 or user_guess > 10:
         print("Invalid input!")
+        print()
         user_guess = int(input("Enter a number between 1-10: "))
 
     # create boolean to check if user's guess passes requirements
     is_duplicate = False
     pass_requirements = False
 
-    # uses loop to check for invalid guesses, asks to guess again if so
+    # uses loop to check for invalid guesses, asks to guess again if so and checks if new guess is valid again
     while pass_requirements == False and previous_guesses != []:
 
         # uses loop to check for in range guess
         while user_guess < 1 or user_guess > 10:
             print("Invalid input!")
+            print()
             user_guess = int(input("Enter a number between 1-10: "))
 
         # uses loop to check for duplicate guess
@@ -48,6 +51,7 @@ while correct_answer_picked == False:
                 print("You already guessed", i)
                 print("Choose a different number.")
                 print("Previous guesses:", previous_guesses)
+                print()
                 is_duplicate = True
 
         # uses if to check if requirements were passed, otherwise asks again and validates user's guess again
@@ -58,17 +62,19 @@ while correct_answer_picked == False:
 
     # add guesses into list to check for duplicates
     previous_guesses.append(user_guess)
-    print(previous_guesses)
 
-    # evaluate whether user guessed the random number or if its higher or lower
+    # evaluate whether user guessed the random number or if its higher or lower plus closing statements
     if user_guess > random_number:
         print("Try again! The random number is lower!")
         print("Previous guesses:", previous_guesses)
+        print()
     elif user_guess < random_number:
         print("Try again! The random number is higher!")
         print("Previous guesses:", previous_guesses)
+        print()
     else:
         print("Congratulations, you guessed correctly!")
+        print("See you next time!")
         correct_answer_picked = True
 
 
