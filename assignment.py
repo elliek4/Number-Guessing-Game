@@ -13,14 +13,21 @@ previous_guesses = []
 
 # introduce user to game
 print("Welcome to the Number Guessing Game!")
-print("You'll have to guess a number between 1-10 to win.")
+print("You'll have 5 tries to guess a number between 1-10 to win.")
 print("Good luck!")
 print()
 
 # condition to keep running while loop until correct answer is guessed
 correct_answer_picked = False
 
-while correct_answer_picked == False:
+# variable to keep track of number of tries
+tries = 5
+
+# loop 
+while correct_answer_picked == False and tries > 0:
+
+    # count user's tries
+    tries -= 1
 
     # asks user to enter their guess and gets their input as an integer
     user_guess = int(input("Enter a number between 1-10: "))
@@ -64,7 +71,13 @@ while correct_answer_picked == False:
     previous_guesses.append(user_guess)
 
     # evaluate whether user guessed the random number or if its higher or lower plus closing statements
-    if user_guess > random_number:
+    if tries < 1:
+        print("You ran out of tries!")
+        print()
+        print("Your guesses were:", previous_guesses)
+        print("The correct number:", random_number)
+        print("Game over!")
+    elif user_guess > random_number:
         print("Try again! The random number is lower!")
         print("Previous guesses:", previous_guesses)
         print()
@@ -76,5 +89,16 @@ while correct_answer_picked == False:
         print("Congratulations, you guessed correctly!")
         print("See you next time!")
         correct_answer_picked = True
+
+    # tell users how many tries they have left
+    if tries == 0:
+        print()
+    elif tries == 1 and correct_answer_picked != True:
+        print("You have", tries, "try left!")
+        print()
+    elif tries < 5 and correct_answer_picked != True:
+        print("You have", tries, "tries left!")
+        print()
+
 
 
